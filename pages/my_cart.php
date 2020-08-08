@@ -27,7 +27,7 @@
 		require_once("../php/user_info.php");
 		require_once("../assist/nav.php");
 		?>
-		<div class="container my-4 pt-4">
+		<div class="container">
 			<ol class="breadcrumb bg-white">
 				<li class="breadcrumb-item" ><a href="../index.php">Home</a></li>
 				<li class="breadcrumb-item active">My Cart</li>

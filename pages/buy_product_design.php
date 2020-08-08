@@ -215,10 +215,16 @@ if(empty($_COOKIE['_aid_']))
 						<h4 class="text-secondary text-center mt-5">Write a massage to saller</h4>
 						<form class="chat-form mt-4">
 							<div class="form-group mb-3">
-								<input type="text" name="massage" class="form-control" placeholder="write your massage here">
+								<input type="text" name="massage" class="form-control massage" placeholder="write your massage here">
+							</div>
+							<div class="form-group mb-3 d-none">
+								<input type="text" name="resever" class="form-control" value="<?php echo base64_encode($seller_id);?>">
+							</div>
+							<div class="form-group mb-3 d-none">
+								<input type="text" name="product" class="form-control" value="<?php echo base64_encode($product_id);?>">
 							</div>
 							<div class="form-group mt-3">
-								<button class="btn w-100 text-white mt-3" type="submit" style="background: #00D07E">SEND MASSAGE</button>
+								<button class="btn w-100 text-white mt-3 send-msg-btn" type="submit" style="background: #00D07E">SEND MASSAGE</button>
 							</div>
 						</form>
 					</div>
@@ -256,6 +262,27 @@ if(empty($_COOKIE['_aid_']))
 				$(".chat-btn").click(function(){
 					$("#chat-box").modal('show');
 				});
+			});
+
+			// massage code
+
+			$(document).ready(function(){
+				$(".chat-form").submit(function(e){
+					e.preventDefault();
+					var msg = $(".massage").val();
+					$.ajax({
+						type : "POST",
+						url : "../php/first_chat.php",
+						data : new FormData(this),
+						processData : false,
+						contentType : false,
+						cache : false,
+						success : function(response)
+						{
+							console.log(response);
+						}
+					});
+					});
 			});
 		</script>
 	</body>

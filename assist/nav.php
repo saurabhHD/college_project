@@ -9,10 +9,11 @@ if(!empty($_COOKIE['_aid_']))
 	$menu = '
 			<li class="nav-item  ml-2 dropdown" ><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="http://localhost/college_project/images/profile/'.$pic.'" width="40" height="40" style="border-radius:50%;margin-top:-10px;"> <span class="d-lg-none">&nbsp; '.$fullname.'</span></a>
 			<div class="dropdown-menu bg-white">
+			<a href="http://localhost/college_project/pages/sell.php" class="dropdown-item text-secondary" ><i class="fa fa-camera"></i> Sall books</a>
 				<a href="http://localhost/college_project/pages/profile.php" class="dropdown-item text-secondary"><i class="fa fa-edit" ></i> Profile</a>
 				<a href="#" class="dropdown-item text-secondary" ><i class="fa fa-book"></i> My books</a>
 				<a href="#" class="dropdown-item text-secondary" ><i class="fa fa-file-pdf-o"></i> Manage E-Books</a>
-				<a href="#" class="dropdown-item text-secondary" ><i class="fa fa-comments-o"></i> Chat</a>
+				<a href="http://localhost/college_project/pages/chat_main.php" class="dropdown-item text-secondary" ><i class="fa fa-comments-o"></i> Chat</a>
 				<a href="#" class="dropdown-item text-secondary" ><i class="fa fa-tachometer"></i> Dashborad</a>
 				<a href="http://localhost/college_project/pages/logout.php" class="dropdown-item text-secondary" ><i class="fa fa-sign-out"></i> Logout</a>
 				
