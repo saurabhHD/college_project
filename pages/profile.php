@@ -92,8 +92,8 @@ if($board !="")
 				</div>
 				
 				<div class="col-md-8">
-					<h3 class=" text-secondary mb-3"><?php echo $fullname;?></h3>
-					<h5 class="text-secondary mb-3"><i class="fa fa-map-marker"></i> <?php echo $city;?></h5>
+					<h3 class=" text-secondary mb-3 text-capitalize"><?php echo $fullname;?></h3>
+					<h5 class="text-secondary mb-3 text-capitalize"><i class="fa fa-map-marker"></i> <?php echo $city;?></h5>
 					<p class="m-0">RATEINGS</p>
 					<h4 class="text-secondary mb-4">4.5/5 &nbsp;
 						<i class="fa fa-star" style="color: #00D07E;"></i>
@@ -128,14 +128,14 @@ if($board !="")
 					</div>
 					<div class="row mt-3">
 						<div class="col-4 text-secondary">Address :</div>
-						<div class="col-4 text-secondary"><?php echo $address;?></div>
+						<div class="col-4 text-secondary text-capitalize"><?php echo $address;?></div>
 						<div class="col-4"></div>
 					</div>
 					<hr>
 					<p class="text-secondary">BASIC INFORMATION</p>
 					<div class="row">
 						<div class="col-4 text-secondary">Gender :</div>
-						<div class="col-4 text-secondary"><?php echo $gender;?></div>
+						<div class="col-4 text-secondary text-capitalize"><?php echo $gender;?></div>
 						<div class="col-4"></div>
 					</div>
 					<div class="row mt-3">
@@ -152,17 +152,17 @@ if($board !="")
 					<p class="text-secondary">COLLEGE INFORMATION</p>
 					<div class="row">
 						<div class="col-4 text-secondary">College :</div>
-						<div class="col-4 text-secondary"><?php echo $college;?></div>
+						<div class="col-4 text-secondary text-capitalize"><?php echo $college;?></div>
 						<div class="col-4"></div>
 					</div>
 					<div class="row mt-3">
 						<div class="col-4 text-secondary">Board :</div>
-						<div class="col-4 text-secondary"><?php echo $board;?></div>
+						<div class="col-4 text-secondary text-capitalize"><?php echo $board;?></div>
 						<div class="col-4"></div>
 					</div>
 					<div class="row mt-3">
 						<div class="col-4 text-secondary">Course :</div>
-						<div class="col-4 text-secondary"><?php echo $course;?></div>
+						<div class="col-4 text-secondary text-capitalize"><?php echo $course;?></div>
 						<div class="col-4"></div>
 					</div>
 				</div>

@@ -1,3 +1,16 @@
+<?php
+
+
+if(empty($_COOKIE['_aid_']))
+{
+	header("Location:../pages/login.php");
+	exit;
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -72,9 +85,15 @@
 		}
 		.active-thumb-pic
 		{
-			width: 60px;
-			height: 60px;
+			width: 70px;
+			height: 70px;
 			border-radius: 50%;
+		}
+		.massage-box-active
+		{
+			max-height: 320px;
+			min-height: 300px;
+			overflow-y: scroll;
 		}
 		</style>
 	</head>
@@ -84,9 +103,9 @@
 		require_once("../php/user_info.php");
 		require_once("../assist/nav.php");
 		?>
-		<div class="border container">
-		<div class="border row">
-			<div class="border col-12 top">
+		<div class=" container">
+		<div class=" row">
+			<div class="col-12 top">
 				<div class="row">
 					<div class="col-4">
 						<div class="form-group has-search m-0 my-2">
@@ -98,176 +117,78 @@
 				</div>
 			</div>
 		</div>
-		<div class="border row">
-			<div class="border col-4 left">
+		<div class="row">
+			<div class=" col-4 left">
 				<div class="left-chat-thumb px-2 pt-2">
-					<div class="row active-thumb shadow-sm pt-2 mb-3 rounded-lg">
-						<div class="col-2">
-							<img src="../images/profile/demo.jpg" class="left-chat-thumb-pic shadow-sm">
-						</div>
-						<div class="col-7">
-							<div class="chat-name mt-2">
-								<h5 class="text-secondary mb-0">Saurabh Kumar</h5>
-								<p class="last-massage">Hi this is here your last massage...</p>
-							</div>
-						</div>
-						<div class="col-3">
-							<p class="time-ago text-secondary m-0 text-center">1 min</p>
-							<div class="unread-count-box mt-2 mx-auto">
-							<p class="unread-count">2</p>
-							</div>
-							
-						</div>
-					</div>
-					<div class="row shadow-sm pt-2 mb-3 rounded-lg">
-						<div class="col-2">
-							<img src="../images/profile/demo.jpg" class="left-chat-thumb-pic shadow-sm">
-						</div>
-						<div class="col-7">
-							<div class="chat-name mt-2">
-								<h5 class="text-secondary mb-0">Saurabh Kumar</h5>
-								<p class="last-massage">Hi this is here your last massage...</p>
-							</div>
-						</div>
-						<div class="col-3">
-							<p class="time-ago text-secondary m-0 text-center">1 min</p>
-							<div class="unread-count-box mt-2 mx-auto">
-							<p class="unread-count">2</p>
-							</div>
-							
-						</div>
-					</div>
-					<div class="row shadow-sm pt-2 mb-3 rounded-lg">
-						<div class="col-2">
-							<img src="../images/profile/demo.jpg" class="left-chat-thumb-pic shadow-sm">
-						</div>
-						<div class="col-7">
-							<div class="chat-name mt-2">
-								<h5 class="text-secondary mb-0">Saurabh Kumar</h5>
-								<p class="last-massage">Hi this is here your last massage...</p>
-							</div>
-						</div>
-						<div class="col-3">
-							<p class="time-ago text-secondary m-0 text-center">1 min</p>
-							<div class="unread-count-box mt-2 mx-auto d-none">
-							<p class="unread-count">2</p>
-							</div>
-							
-						</div>
-					</div>
-					<div class="row shadow-sm pt-2 mb-3 rounded-lg">
-						<div class="col-2">
-							<img src="../images/profile/demo.jpg" class="left-chat-thumb-pic shadow-sm">
-						</div>
-						<div class="col-7">
-							<div class="chat-name mt-2">
-								<h5 class="text-secondary mb-0">Saurabh Kumar</h5>
-								<p class="last-massage">Hi this is here your last massage...</p>
-							</div>
-						</div>
-						<div class="col-3">
-							<p class="time-ago text-secondary m-0 text-center">1 min</p>
-							<div class="unread-count-box mt-2 mx-auto d-none">
-							<p class="unread-count">2</p>
-							</div>
-							
-						</div>
-					</div>
-					<div class="row shadow-sm pt-2 mb-3 rounded-lg">
-						<div class="col-2">
-							<img src="../images/profile/demo.jpg" class="left-chat-thumb-pic shadow-sm">
-						</div>
-						<div class="col-7">
-							<div class="chat-name mt-2">
-								<h5 class="text-secondary mb-0">Saurabh Kumar</h5>
-								<p class="last-massage">Hi this is here your last massage...</p>
-							</div>
-						</div>
-						<div class="col-3">
-							<p class="time-ago text-secondary m-0 text-center">1 min</p>
-							<div class="unread-count-box mt-2 mx-auto d-none">
-							<p class="unread-count">2</p>
-							</div>
-							
-						</div>
-					</div>
-					<div class="row shadow-sm pt-2 mb-3 rounded-lg">
-						<div class="col-2">
-							<img src="../images/profile/demo.jpg" class="left-chat-thumb-pic shadow-sm">
-						</div>
-						<div class="col-7">
-							<div class="chat-name mt-2">
-								<h5 class="text-secondary mb-0">Saurabh Kumar</h5>
-								<p class="last-massage">Hi this is here your last massage...</p>
-							</div>
-						</div>
-						<div class="col-3">
-							<p class="time-ago text-secondary m-0 text-center">1 min</p>
-							<div class="unread-count-box mt-2 mx-auto d-none">
-							<p class="unread-count">2</p>
-							</div>
-							
-						</div>
-					</div>
-					<div class="row shadow-sm pt-2 mb-3 rounded-lg">
-						<div class="col-2">
-							<img src="../images/profile/demo.jpg" class="left-chat-thumb-pic shadow-sm">
-						</div>
-						<div class="col-7">
-							<div class="chat-name mt-2">
-								<h5 class="text-secondary mb-0">Saurabh Kumar</h5>
-								<p class="last-massage">Hi this is here your last massage...</p>
-							</div>
-						</div>
-						<div class="col-3">
-							<p class="time-ago text-secondary m-0 text-center">1 min</p>
-							<div class="unread-count-box mt-2 mx-auto d-none">
-							<p class="unread-count">2</p>
-							</div>
-							
-						</div>
-					</div>
-					<div class="row shadow-sm pt-2 mb-3 rounded-lg">
-						<div class="col-2">
-							<img src="../images/profile/demo.jpg" class="left-chat-thumb-pic shadow-sm">
-						</div>
-						<div class="col-7">
-							<div class="chat-name mt-2">
-								<h5 class="text-secondary mb-0">Saurabh Kumar</h5>
-								<p class="last-massage">Hi this is here your last massage...</p>
-							</div>
-						</div>
-						<div class="col-3">
-							<p class="time-ago text-secondary m-0 text-center">1 min</p>
-							<div class="unread-count-box mt-2 mx-auto d-none">
-							<p class="unread-count">2</p>
-							</div>
-							
-						</div>
-					</div>
+					<!--Start dynamic chat thumbnail-->
+					<?php
+					require_once("../php/chat_thumbnail.php");
+					?>
+					<!--End dynamic chat thumbnail-->
 				</div>
 			</div>
-			<div class="border col-8 right">
-				<div class="border row">
-					<div class="border col-12 p-3">
+			<div class=" col-8 right d-none">
+				<div class=" row">
+					<div class=" col-12 p-2 shadow-sm">
 						<div class="row">
-							<div class="col-1">
-								<img src="../images/profile/demo.jpg" class="active-thumb-pic">
+							<div class="col-1 back-btn d-none">
+								<button class="btn mt-3">
+									<i class="fa fa-arrow-left fa-lg text-secondary"></i>
+								</button>
 							</div>
-							<div class="col-8">
-								<div class="name-active ml-2">
-									<h5 class="name-active-text text-secondary mt-2 mb-0">Rohit Kumar</h5>
-									<p class="active-status m-0 text-secondary">Online</p>
+							<div class="col-1 active-chat-pic-box">
+							</div>
+							<div class="col-6 active-chat-text-box">
+								<div class="name-active ml-3">
+									<h6 class="name-active-text text-secondary m-0 mt-3 p-0"></h6>
+									<small class="active-status m-0 text-secondary">Online</small>
 								</div>
 							</div>
-							<div class="col-3"></div>
+							<div class="col-3">
+								<div class="row pt-3">
+									<div class="col-3">
+										<button class="btn add-to-friend d-none">
+										<i class="fa fa-user-plus add-to-friend-icon" style="font-size: 20px;color: #ccc;"></i>
+										</button>
+									</div>
+									<div class="col-3">
+										<button class="btn add-to-favrate d-none">
+										<i class="fa fa-star-o add-to-favrate-icon" style="font-size: 20px;color: #ccc;"></i>
+										</button>
+									</div>
+									<div class="col-3">
+										<button class="btn user-info d-none">
+										<i class="fa fa-info-circle user-info-icon" style="font-size: 22px;color: #ccc;"></i>
+										</button>
+									</div>
+									<div class="col-3">
+										<button class="btn more-option">
+										<i class="fa fa-ellipsis-v more-option-icon" style="font-size: 20px;color: #ccc;"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-1"></div>
 						</div>
 					</div>
 				</div>
-				<div class="border row">
-					<div class="border col-12">right-center</div>
-				</div><div class="border row">
-					<div class="border col-12">right-bottom</div>
+				<div class=" row massage-box-active">
+					<div class=" col-12 p-2 massage-box">
+							
+					</div>
+				</div><div class=" row">
+					<div class=" col-12">
+						<form class="mt-3 massage-form">
+							<div class="input-group">
+								<input type="text" name="massage" class="form-control border-0 massage-input" placeholder="Write your massage...">
+								<div class="input-group-append">
+									<button class="btn mx-2" type="submit" style="background: #00D07E;width: 50px; height: 50px;border-radius: 50%;">
+										<i class="fa fa-send text-center mr-1" style="color: #fff;"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -276,6 +197,139 @@
 		require_once("../assist/footer.php");
 		?>
 		<script>
+			$(document).ready(function(){
+				$(".chat-thumb").each(function(){
+					$(this).click(function(){
+						$(".right").removeClass('d-none');
+						$(".chat-thumb").removeClass('active-thumb');
+						$(this).addClass('active-thumb');
+						var active = this;
+						var sender_id = $(this).attr('sender');
+						var sender_pic = $(this).attr('sender-pic');
+						var sender_name = $(this).attr('name');
+						var massage_id = $(this).attr('massage');
+						$(".active-chat-pic-box").html('<img src="../images/profile/'+sender_pic+'" class="active-thumb-pic">');
+						$(".name-active-text").html(sender_name);
+						$(".more-option").attr("sender",sender_id);
+						$.ajax({
+							type : "POST",
+							url : "../php/open_chat.php",
+							data : {
+								sender_id : sender_id,
+								massage_id : massage_id
+							},
+							success : function(response)
+							{
+								$(".massage-box").html("");
+								var all_data = response.trim();
+								all_data = JSON.parse(all_data);
+								var i;
+								for(i=0;i<=all_data.length;i++)
+								{
+									$(".massage-box").append(all_data[i]);
+								}
+								$(".massage-box-active").scrollTop(10000000);
+								
+							}
+						});
+						//send massage
+
+								$(".massage-form").submit(function(e)
+									{
+										e.preventDefault();
+										var msg = $(".massage-input").val();
+										if(msg !="")
+										{
+											$.ajax({
+												type : "POST",
+												url : "../php/send_massage.php",
+												data : {
+													massage : msg,
+													resever_id : sender_id,
+													massage_id : massage_id
+												},
+												success : function(response)
+												{
+													if(response.trim() != "faild")
+													{
+														$(".massage-box").append(response);
+														$(".massage-form").trigger('reset');
+														$(".massage-box-active").scrollTop(10000000);
+													}
+												}
+											});
+										}
+										else
+										{
+											alert("Write your massage..");
+										}
+									});
+
+								// dynamic massage 
+
+								setInterval(function(){
+									$.ajax({
+							type : "POST",
+							url : "../php/open_chat.php",
+							data : {
+								sender_id : sender_id,
+								massage_id : massage_id
+							},
+							success : function(response)
+							{
+								$(".massage-box").html("");
+								var all_data = response.trim();
+								all_data = JSON.parse(all_data);
+								var i;
+								for(i=0;i<=all_data.length;i++)
+								{
+									$(".massage-box").append(all_data[i]);
+								}
+								
+								
+							}
+						});
+								},500);
+					});
+
+
+				});
+			});
+
+			function ohh() {$(document).ready(function(){
+				var width = $(window).width();
+				if(width <= 668)
+				{
+					$(".left").removeClass("col-4");
+					$(".left").addClass("col-12");
+					$(".chat-thumb").each(function(){
+						$(this).click(function(){
+							$(".left").addClass("d-none");
+							$(".right").removeClass("col-8");
+							$(".right").addClass("col-12");
+							$(".back-btn").removeClass("d-none");
+							$(".top").addClass("d-none");
+							$(".active-chat-pic-box").removeClass("col-1");
+							$(".active-chat-pic-box").addClass("col-2");
+							$(".active-chat-text-box").removeClass("col-6");
+							$(".active-chat-text-box").addClass("col-5");
+							$(".back-btn").click(function(){
+								$(".left").removeClass("d-none");
+								$(".right").addClass("d-none");
+							});
+						});
+					});
+				}
+				else
+				{
+					$(".left").addClass("col-4");
+					$(".left").removeClass("col-12");
+				}
+			});}
+			ohh();
+			$(window).resize(function(){
+				location.reload();
+			});
 		</script>
 	</body>
 </html>

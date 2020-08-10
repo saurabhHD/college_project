@@ -1,3 +1,14 @@
+<?php
+
+
+if(empty($_COOKIE['_aid_']))
+{
+	header("Location:../pages/login.php");
+	exit;
+}
+
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>

@@ -34,7 +34,11 @@ if($response->num_rows !=0)
 		$pic = $data['photo'];
 		$address = $data['address'];
 		$dob = $data['dob'];
+		$dob =date_create($dob);
+		$dob = $dob->format('d-m-Y');
 		$reg_date = $data['reg_date'];
+		$reg_date = date_create($reg_date);
+		$reg_date = $reg_date->format('d-m-Y');
 	}
 }
 

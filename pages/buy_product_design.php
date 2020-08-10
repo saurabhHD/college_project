@@ -26,6 +26,8 @@ if(empty($_COOKIE['_aid_']))
 				$thumb = $data['thumb'];
 				$seller_id = $data['seller_id'];
 				$date = $data['upload_date'];
+				$date = date_create($date);
+				$date = $date->format('d-m-Y');
 				$city = $data['city'];
 				$page = $data['page'];
 				$type = $data['type'];
@@ -223,6 +225,9 @@ if(empty($_COOKIE['_aid_']))
 							<div class="form-group mb-3 d-none">
 								<input type="text" name="product" class="form-control" value="<?php echo base64_encode($product_id);?>">
 							</div>
+							<div class="form-group mb-3 d-none">
+								<input type="text" name="resever_name" class="form-control" value="<?php echo base64_encode($fullname);?>">
+							</div>
 							<div class="form-group mt-3">
 								<button class="btn w-100 text-white mt-3 send-msg-btn" type="submit" style="background: #00D07E">SEND MASSAGE</button>
 							</div>
@@ -279,7 +284,14 @@ if(empty($_COOKIE['_aid_']))
 						cache : false,
 						success : function(response)
 						{
-							console.log(response);
+							if(response.trim() == "success")
+							{
+								window.location = "chat_main.php";
+							}
+							else
+							{
+								$("#chat-box").modal('hide');
+							}
 						}
 					});
 					});
