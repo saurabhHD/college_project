@@ -76,7 +76,23 @@ class create_table{
 						$this->response = $this->db->query($this->query);
 						if($this->response)
 						{
-							return true;
+							$this->query = "CREATE TABLE IF NOT EXISTS chat (
+							  id int(11) NOT NULL AUTO_INCREMENT,
+							  sender_name varchar(100) DEFAULT NULL,
+							  sender_id int(11) DEFAULT NULL,
+							  product_id int(11) DEFAULT NULL,
+							  status varchar(10) DEFAULT 'unread',
+							  send_date datetime NOT NULL DEFAULT current_timestamp(),
+							  resever_id int(11) DEFAULT NULL,
+							  reseve_date datetime DEFAULT NULL,
+							  resever_name varchar(100) DEFAULT NULL,
+							  PRIMARY KEY (id)
+							)";
+							$this->response = $this->db->query($this->query);
+							if($this->response)
+							{
+								return true;
+							}
 						}
 					}
 				}

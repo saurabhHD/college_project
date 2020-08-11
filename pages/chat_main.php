@@ -17,7 +17,7 @@ if(empty($_COOKIE['_aid_']))
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="../images/favicon.svg" type="image/svg" sizes="16x16">
-		<title>My Cart</title>
+		<title>Cat</title>
 		<link rel="stylesheet" href="../common_files/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../common_files/css/animate.css">
 		<link rel="stylesheet" href="../common_files/css/fontawesome.min.css">
@@ -91,7 +91,7 @@ if(empty($_COOKIE['_aid_']))
 		}
 		.massage-box-active
 		{
-			max-height: 320px;
+			max-height: 480px;
 			min-height: 300px;
 			overflow-y: scroll;
 		}
@@ -132,8 +132,8 @@ if(empty($_COOKIE['_aid_']))
 					<div class=" col-12 p-2 shadow-sm">
 						<div class="row">
 							<div class="col-1 back-btn d-none">
-								<button class="btn mt-3">
-									<i class="fa fa-arrow-left fa-lg text-secondary"></i>
+								<button class="btn back-btn mt-3">
+									<i class="fa fa-arrow-left fa-lg text-secondary text-left"></i>
 								</button>
 							</div>
 							<div class="col-1 active-chat-pic-box">
@@ -144,7 +144,7 @@ if(empty($_COOKIE['_aid_']))
 									<small class="active-status m-0 text-secondary">Online</small>
 								</div>
 							</div>
-							<div class="col-3">
+							<div class="col-4">
 								<div class="row pt-3">
 									<div class="col-3">
 										<button class="btn add-to-friend d-none">
@@ -156,24 +156,24 @@ if(empty($_COOKIE['_aid_']))
 										<i class="fa fa-star-o add-to-favrate-icon" style="font-size: 20px;color: #ccc;"></i>
 										</button>
 									</div>
-									<div class="col-3">
+									<div class="col-4">
 										<button class="btn user-info d-none">
 										<i class="fa fa-info-circle user-info-icon" style="font-size: 22px;color: #ccc;"></i>
 										</button>
 									</div>
-									<div class="col-3">
-										<button class="btn more-option">
+									<div class="col-2 ml-auto">
+										<button class="btn more-option float-right">
 										<i class="fa fa-ellipsis-v more-option-icon" style="font-size: 20px;color: #ccc;"></i>
 										</button>
 									</div>
 								</div>
 							</div>
-							<div class="col-1"></div>
+							
 						</div>
 					</div>
 				</div>
-				<div class=" row massage-box-active">
-					<div class=" col-12 p-2 massage-box">
+				<div class=" row massage-box-active ">
+					<div class=" col-12 p-2 massage-box ">
 							
 					</div>
 				</div><div class=" row">
@@ -182,7 +182,7 @@ if(empty($_COOKIE['_aid_']))
 							<div class="input-group">
 								<input type="text" name="massage" class="form-control border-0 massage-input" placeholder="Write your massage...">
 								<div class="input-group-append">
-									<button class="btn mx-2" type="submit" style="background: #00D07E;width: 50px; height: 50px;border-radius: 50%;">
+									<button class="btn mx-2 send-msg-btn" type="submit" style="background: #00D07E;width: 50px; height: 50px;border-radius: 50%;">
 										<i class="fa fa-send text-center mr-1" style="color: #fff;"></i>
 									</button>
 								</div>
@@ -248,8 +248,12 @@ if(empty($_COOKIE['_aid_']))
 													resever_id : sender_id,
 													massage_id : massage_id
 												},
+												beforeSend : function(){
+													$(".send-msg-btn").attr("disabled","disabled");
+												},
 												success : function(response)
 												{
+													$(".send-msg-btn").removeAttr("disabled");
 													if(response.trim() != "faild")
 													{
 														$(".massage-box").append(response);
@@ -322,13 +326,30 @@ if(empty($_COOKIE['_aid_']))
 				}
 				else
 				{
-					$(".left").addClass("col-4");
 					$(".left").removeClass("col-12");
+					$(".left").addClass("col-4");
+					$(".chat-thumb").each(function(){
+						$(this).click(function(){
+							$(".left").removeClass("d-none");
+							$(".right").removeClass("col-12");
+							$(".right").addClass("col-8");							
+							$(".back-btn").addClass("d-none");
+							$(".top").removeClass("d-none");
+							$(".active-chat-pic-box").removeClass("col-2");
+							$(".active-chat-pic-box").addClass("col-1");
+							$(".active-chat-text-box").removeClass("col-5");
+							$(".active-chat-text-box").addClass("col-6");		
+							$(".back-btn").click(function(){
+								$(".left").addClass("d-none");
+								$(".right").removeClass("d-none");
+							});
+						});
+					});
 				}
 			});}
 			ohh();
 			$(window).resize(function(){
-				location.reload();
+				ohh();
 			});
 		</script>
 	</body>
