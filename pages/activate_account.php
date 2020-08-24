@@ -6,7 +6,10 @@ if(empty($_COOKIE['_aid_']))
 }
 require_once("../common_files/database/database.php");
 require_once("../php/user_info.php");
-
+if($user_status == "active")
+	{
+		header("Location:../");
+	}
 ?>
 <!DOCTYPE html>
 <html>

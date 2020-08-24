@@ -25,6 +25,7 @@ if(empty($_COOKIE['_aid_']))
 		<script src="../common_files/js/jquery.js"></script>
 		<script src="../common_files/js/popper.js"></script>
 		<script src="../common_files/js/bootstrap.min.js"></script>
+		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 		<style type="text/css">
 			*:focus{
 				box-shadow: none !important;
@@ -101,6 +102,12 @@ if(empty($_COOKIE['_aid_']))
 		<?php
 		require_once("../common_files/database/database.php");
 		require_once("../php/user_info.php");
+		
+		if($user_status == "pending")
+		{
+			header("Location:activate_account.php");
+			exit;
+		}
 		require_once("../assist/nav.php");
 		?>
 		<div class=" container">
@@ -223,11 +230,17 @@ if(empty($_COOKIE['_aid_']))
 								$(".massage-box").html("");
 								var all_data = response.trim();
 								all_data = JSON.parse(all_data);
+
 								var i;
 								for(i=0;i<=all_data.length;i++)
 								{
 									$(".massage-box").append(all_data[i]);
+									
 								}
+								$(".raju").each(function(){
+									var id = $(this).attr("id");
+									sessionStorage.setItem("raju",id);
+								});
 								$(".massage-box-active").scrollTop(10000000);
 								
 							}
@@ -256,7 +269,7 @@ if(empty($_COOKIE['_aid_']))
 													$(".send-msg-btn").removeAttr("disabled");
 													if(response.trim() != "faild")
 													{
-														$(".massage-box").append(response);
+															
 														$(".massage-form").trigger('reset');
 														$(".massage-box-active").scrollTop(10000000);
 													}
@@ -272,27 +285,34 @@ if(empty($_COOKIE['_aid_']))
 								// dynamic massage 
 
 								setInterval(function(){
+									var chat_id = sessionStorage.getItem("raju");
 									$.ajax({
-							type : "POST",
-							url : "../php/open_chat.php",
-							data : {
-								sender_id : sender_id,
-								massage_id : massage_id
-							},
-							success : function(response)
-							{
-								$(".massage-box").html("");
-								var all_data = response.trim();
-								all_data = JSON.parse(all_data);
-								var i;
-								for(i=0;i<=all_data.length;i++)
-								{
-									$(".massage-box").append(all_data[i]);
-								}
-								
-								
-							}
-						});
+										type : "POST",
+										url : "../php/dynamic_load_massage.php",
+										data : {
+											massage_id : massage_id,
+											sender_id : sender_id,
+											chat_id : chat_id
+										},
+										success : function(response){
+											if(response != "faild")
+											{
+												var all_data = response.trim();
+												all_data = JSON.parse(all_data);
+												
+												var i;
+												for(i=0;i<=all_data.length;i++)
+												{
+													$(".massage-box").append(all_data[i]);
+													
+												}
+												$(".raju").each(function(){
+													var id = $(this).attr("id");
+													sessionStorage.setItem("raju",id);
+												});
+											}
+										}
+									});
 								},500);
 					});
 

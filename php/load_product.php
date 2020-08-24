@@ -21,7 +21,7 @@ class main{
 						<img src="images/products/'.$this->data['thumb'].'" width="250" style="border-radius: 15px 15px 0px 0px">
 					</div>
 					<div class="text-box">
-						<h4 class="text-center mt-3 text-secondary text-capitalize">'.$this->data['title'].'</h4>
+						<h6 class="text-center mt-3 text-secondary text-capitalize">'.$this->data['title'].'</h6>
 						<p class="text-center text-secondary"><i class="fa fa-rupee"></i> '.$this->data['price'].'</p>
 						<div class="text-center my-3">
 						<button class="btn font-weight-bold pro-btn rounded-lg" product-id="'.base64_encode($this->data['id']).'">Explore More</button>

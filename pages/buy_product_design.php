@@ -8,11 +8,17 @@ if(empty($_COOKIE['_aid_']))
 	exit;
 }
 	require_once("../php/user_info.php");
-
+		if($user_status == "pending")
+		{
+			header("Location:activate_account.php");
+			exit;
+		}
 
 			$db = new database();
 			$db = $db->db();
 			$product_id = base64_decode($_GET['id']);
+			session_start();
+			$_SESSION['product_id'] = $product_id;
 			$query = $db->prepare("SELECT * FROM products WHERE id=? AND status='stock'");
 			$query->bind_param('i',$product_id);
 			$query->execute();
@@ -21,8 +27,10 @@ if(empty($_COOKIE['_aid_']))
 			{
 				$data = $response->fetch_assoc();
 				$title = $data['title'];
+				$_SESSION['title'] = $title;
 				$language = $data['language'];
 				$price = $data['price'];
+				$_SESSION['amount'] = $price;
 				$thumb = $data['thumb'];
 				$seller_id = $data['seller_id'];
 				$date = $data['upload_date'];
@@ -35,10 +43,12 @@ if(empty($_COOKIE['_aid_']))
 				if($type =="pbook")
 				{
 					$type = "Hard Copy";
+					$btn = '<button class="btn chat-btn px-5 text-light font-weight-bold" style="background: #00D07E;font-size: 20px;" ><i class="fa fa-comments" style="font-size: 30px;"></i>&nbsp;&nbsp;&nbsp;CHAT</button>';
 				}
 				else if($type =="ebook")
 				{
 					$type = "E Book";
+					$btn = '<button class="btn buy-btn px-5 text-light font-weight-bold" style="background: #00D07E;font-size: 20px;" product-id="'.base64_encode($product_id).'"><i class="fa fa-shopping-cart" style="font-size: 30px;"></i>&nbsp;&nbsp;&nbsp;BUY NOW</button>';
 				}
 				$cart ="";
 				$cart_info = $db->prepare("SELECT * FROM cart WHERE user_id=? AND product_id=?");
@@ -175,7 +185,7 @@ if(empty($_COOKIE['_aid_']))
 					</div>
 					<div class="action mt-4">
 						<br>
-						<button class="btn chat-btn px-5 text-light font-weight-bold" style="background: #00D07E;font-size: 20px;" ><i class="fa fa-comments" style="font-size: 30px;"></i>&nbsp;&nbsp;&nbsp;CHAT</button>
+						<?php echo $btn;?>
 						<button class="btn ml-2 text-secondary add-cart mt-2" product-id=
 						"<?php echo base64_encode($product_id);?>" style="font-size: 20px;">
 						<i class="<?php echo $cart;?> cart-icon" style="color: #00D07E;font-size:25px;"></i>&nbsp;Add to cart</button>
@@ -291,10 +301,17 @@ if(empty($_COOKIE['_aid_']))
 							else
 							{
 								$("#chat-box").modal('hide');
+								
 							}
 						}
 					});
 					});
+			});
+			$(document).ready(function(){
+				$(".buy-btn").click(function(){
+					var product_id = $(this).attr("product-id");
+					window.location = "../php/payment.php";
+				});
 			});
 		</script>
 	</body>

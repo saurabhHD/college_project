@@ -21,6 +21,7 @@
 		require_once("../common_files/database/database.php");
 		require_once("../php/user_info.php");
 		require_once("../assist/nav.php");
+		
 		?>
 		<div class="container my-4">
 			<div class="col-md-12 bg-white shadow-lg py-3 px-4 d-flex flex-column" align="center">
@@ -107,6 +108,7 @@
 			</div>
 		</div>
 		<?php
+		
 		require_once("../assist/footer.php");
 		?>
 		<script>

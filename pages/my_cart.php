@@ -7,6 +7,14 @@ if(empty($_COOKIE['_aid_']))
 	exit;
 }
 
+require_once("../common_files/database/database.php");
+require_once("../php/user_info.php");
+
+		if($user_status == "pending")
+		{
+			header("Location:activate_account.php");
+			exit;
+		}
 
 ?>
 <!DOCTYPE html>
@@ -34,8 +42,6 @@ if(empty($_COOKIE['_aid_']))
 	</head>
 	<body>
 		<?php
-		require_once("../common_files/database/database.php");
-		require_once("../php/user_info.php");
 		require_once("../assist/nav.php");
 		?>
 		<div class="container">

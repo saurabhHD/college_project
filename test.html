@@ -49,74 +49,40 @@
 </head>
 <body>
 <div class="jumbotron bg-white">
-	<div class="row">
-		<div class="col-md-3">
-			<div class="main-box d-flex justify-content-center">
-				<div class="content" style="border-radius: 15px">
-					<div class="image-box">
-						<img src="test.jpg" width="250" style="border-radius: 15px 15px 0px 0px">
-					</div>
-					<div class="text-box">
-						<h4 class="text-center mt-3 text-secondary ">Rich Dad Poor Dad</h4>
-						<p class="text-center text-secondary"><i class="fa fa-rupee"></i> 99</p>
-						<div class="text-center my-3">
-						<button class="btn font-weight-bold pro-btn rounded-lg">Explore More</button>
-						</div>
-					</div>
-				</div>
-			</div>
+	<form class="convert">
+		<div class="input-group w-50">
+		<input type="url" name="url" class="form-control" placeholder="https://soundcloud.com/kevingates/really-really">
+		<button class="btn btn-danger rounded-0">Convert</button>
 		</div>
-		<div class="col-md-3">
-			<div class="main-box d-flex justify-content-center">
-				<div class="content" style="border-radius: 15px">
-					<div class="image-box">
-						<img src="test.jpg" width="250" style="border-radius: 15px 15px 0px 0px">
-					</div>
-					<div class="text-box">
-						<h4 class="text-center mt-3 text-secondary ">Rich Dad Poor Dad</h4>
-						<p class="text-center text-secondary"><i class="fa fa-rupee"></i> 99</p>
-						<div class="text-center my-3">
-						<button class="btn font-weight-bold pro-btn rounded-lg">Explore More</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="main-box d-flex justify-content-center">
-				<div class="content" style="border-radius: 15px">
-					<div class="image-box">
-						<img src="test.jpg" width="250" style="border-radius: 15px 15px 0px 0px">
-					</div>
-					<div class="text-box">
-						<h4 class="text-center mt-3 text-secondary ">Rich Dad Poor Dad</h4>
-						<p class="text-center text-secondary"><i class="fa fa-rupee"></i> 99</p>
-						<div class="text-center my-3">
-						<button class="btn font-weight-bold pro-btn rounded-lg">Explore More</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="main-box d-flex justify-content-center">
-				<div class="content" style="border-radius: 15px">
-					<div class="image-box">
-						<img src="test.jpg" width="250" style="border-radius: 15px 15px 0px 0px">
-					</div>
-					<div class="text-box">
-						<h4 class="text-center mt-3 text-secondary ">Rich Dad Poor Dad</h4>
-						<p class="text-center text-secondary"><i class="fa fa-rupee"></i> 99</p>
-						<div class="text-center my-3">
-						<button class="btn font-weight-bold pro-btn rounded-lg">Explore More</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	</form>
+	<div class="result">
 	</div>
-	
 </div>
+<script>
+	$(document).ready(function(){
+		$(".convert").submit(function(e)
+			{
+				e.preventDefault();
+				$.ajax({
+				type : "POST",
+				url : "test.php",
+				data : new FormData(this),
+				processData: false,
+				contentType: false,
+				cache : false,
+				beforeSend : function(){
+					$(".result").html("<i class='fa fa-spinner fa-spin'></i>");
+				},
+				success : function(response)
+				{
+					$(".result").html(response);
+					var data  = $(".card-body").html();
+					$(".result").html(data);
+				}
+			});
+			});
+		
+	});
+</script>
 </body> 
 </html>
-

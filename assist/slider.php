@@ -1,6 +1,6 @@
 
 	<!-- start first slider -->
- 		<div id="slider" class="carousel slide" data-ride="carousel" data-interval="3000">
+ 		<div id="slider" class="carousel slide d-none d-lg-block" data-ride="carousel" data-interval="3000">
  			<ol class="carousel-indicators">
  				<li data-target="#slider" data-slide-to="0"></li>
 				<li data-target="#slider" data-slide-to="1"></li>

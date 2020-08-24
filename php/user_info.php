@@ -16,6 +16,7 @@ if($response->num_rows !=0)
 	$data = $response->fetch_assoc();
 	$user_id = $data['user_id'];
 	$otp = $data['otp'];
+	$user_status = $data['status'];
 	$query = $db->prepare("SELECT * FROM users_info WHERE user_id=?");
 	$query->bind_param('i',$user_id);
 	$query->execute();
@@ -39,6 +40,7 @@ if($response->num_rows !=0)
 		$reg_date = $data['reg_date'];
 		$reg_date = date_create($reg_date);
 		$reg_date = $reg_date->format('d-m-Y');
+
 	}
 }
 

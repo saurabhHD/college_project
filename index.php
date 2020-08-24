@@ -5,6 +5,11 @@ require_once("common_files/database/database.php");
 if(!empty($_COOKIE['_aid_']))
 {
 	require_once("php/user_info.php");
+	if($user_status == "pending")
+	{
+		header("Location:pages/activate_account.php");
+		exit;
+	}
 }
 
 
@@ -25,6 +30,9 @@ if(!empty($_COOKIE['_aid_']))
 	<script src="common_files/js/popper.js"></script>
 	<script src="common_files/js/bootstrap.min.js"></script>
 	<style type="text/css">
+		body{
+			position: relative;
+		}
 		*:focus{
 			box-shadow: none !important;
 
@@ -53,6 +61,26 @@ if(!empty($_COOKIE['_aid_']))
 		}
 		.content:hover{
 			box-shadow: -2px 4px 68px 1px #ccc !important;
+		}
+		.sell-mobile{
+			position: fixed;
+			left: 30%;
+			right: 30%;
+			bottom: 10px;
+			z-index: 1000;
+		}
+		.sell-modile-btn{
+			background: #00D07E;
+			color: #fff;
+			width: 100%;
+			font-weight: bold;
+			border-radius: 18px;
+			box-shadow: 2px 3px 3px #00D07E;
+
+
+		}
+		.sell-modile-btn:hover{
+			color: #fff;
 		}
 
 	</style>
@@ -86,7 +114,13 @@ require_once("assist/nav.php");
 	</div>
 </div>
 <!-- end Massage Dailogbox-->
+<!--Sell btn for mobile-->
 
+<div class="sell-mobile d-block d-lg-none">
+	<button class="btn sell-modile-btn"><a href="pages/sell.php" class="text-decoration-none sell-modile-btn"><i class="fa fa-camera"></i>   SELL</a></button>
+</div>
+
+<!--/sell btn for mobile-->
 <?php
 require_once("assist/footer.php");
 

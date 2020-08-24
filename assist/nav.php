@@ -2,19 +2,50 @@
 <!--start navbar -->
 
 <?php
-
+$cart_count = "";
+$msg_count = "";
 if(!empty($_COOKIE['_aid_']))
 {
 
+	$cart_query = "SELECT COUNT(id) AS total FROM cart where user_id='$user_id'";
+	$cart_response = $db->query($cart_query);
+	if($cart_response)
+	{
+		$cart_data  = $cart_response->fetch_assoc();
+		$cart_count = $cart_data['total'];
+		if($cart_count >0)
+		{
+			$cart_count = '<div style="position: absolute;top: -15px;right:-15px;color:white;background:red;font-weight: bold;width: 18px;height: 18px;border-radius: 50%;text-align: center;" class="cart-count ">'.$cart_count.'</div>';
+		}
+		else
+		{
+			$cart_count = "";
+		}
+	}
+	$msg_query = "SELECT COUNT(id) AS total FROM massage where resever_id='$user_id' AND status='unread'";
+	$msg_response = $db->query($msg_query);
+	if($msg_response)
+	{
+		$msg_data  = $msg_response->fetch_assoc();
+		$msg_count = $msg_data['total'];
+		if($msg_count >0)
+		{
+			$msg_count = '<div style="position: absolute;top: -15px;right:-15px;color:white;background:red;font-weight: bold;width: 18px;height: 18px;border-radius: 50%;text-align: center;" class="notification-count ">'.$msg_count.'</div>';
+		}
+		else
+		{
+			$msg_count = "";
+		}
+	}
 	$menu = '
 			<li class="nav-item  ml-2 dropdown" ><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="http://localhost/college_project/images/profile/'.$pic.'" width="40" height="40" style="border-radius:50%;margin-top:-10px;"> <span class="d-lg-none">&nbsp; '.$fullname.'</span></a>
 			<div class="dropdown-menu bg-white">
 			<a href="http://localhost/college_project/pages/sell.php" class="dropdown-item text-secondary" ><i class="fa fa-camera"></i> Sall books</a>
 				<a href="http://localhost/college_project/pages/profile.php" class="dropdown-item text-secondary"><i class="fa fa-edit" ></i> Profile</a>
-				<a href="#" class="dropdown-item text-secondary" ><i class="fa fa-book"></i> My books</a>
-				<a href="#" class="dropdown-item text-secondary" ><i class="fa fa-file-pdf-o"></i> Manage E-Books</a>
+				<a href="http://localhost/college_project/pages/my_books.php" class="dropdown-item text-secondary" ><i class="fa fa-book"></i> My books</a>
+				<a href="http://localhost/college_project/pages/m_ebooks.php" class="dropdown-item text-secondary" ><i class="fa fa-file-pdf-o"></i> Manage E-Books</a>
 				<a href="http://localhost/college_project/pages/chat_main.php" class="dropdown-item text-secondary" ><i class="fa fa-comments-o"></i> Chat</a>
-				<a href="#" class="dropdown-item text-secondary" ><i class="fa fa-tachometer"></i> Dashborad</a>
+				<a href="#" class="dropdown-item text-secondary d-none" ><i class="fa fa-tachometer"></i> Dashborad</a>
 				<a href="http://localhost/college_project/pages/logout.php" class="dropdown-item text-secondary" ><i class="fa fa-sign-out"></i> Logout</a>
 				
 			</div>
@@ -64,14 +95,14 @@ else
 		<li class="nav-item  ml-2">
 			<a href="http://localhost/college_project/pages/my_cart.php" class="nav-link">
 				<i class="fa fa-cart-plus position-relative" style="font-size: 18px">
-				<div style="position: absolute;top: -15px;right:-15px;color:white;background:red;font-weight: bold;width: 18px;height: 18px;border-radius: 50%;text-align: center;" class="cart-count ">2</div>
+				<?php echo $cart_count;?>
 				</i>
 				<span class="d-lg-none">&nbsp;&nbsp; CART</span>
 			</a>
 		</li>
 
-		<li class="nav-item  ml-2 "><a href="#" class="nav-link"><i class="fa fa-bell-o position-relative" style="font-size: 18px">
-			<div style="position: absolute;top: -15px;right:-15px;color:white;background:red;font-weight: bold;width: 18px;height: 18px;border-radius: 50%;text-align: center;" class="notification-count ">2</div>
+		<li class="nav-item  ml-2 "><a href="http://localhost/college_project/pages/chat_main.php" class="nav-link"><i class="fa fa-bell-o position-relative" style="font-size: 18px">
+			<?php echo $msg_count;?>
 		</i><span class="d-lg-none">&nbsp;&nbsp; NOTIFICATION</span></a></li>
 		<?php echo $menu;?>
 		

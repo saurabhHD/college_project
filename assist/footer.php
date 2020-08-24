@@ -13,18 +13,22 @@
 				<p class="text-secondary mb-1">Testimonials</p>
 			</div>
 			<div class="col-md-2 mb-3">
-				<p class="text-secondary mb-2 font-weight-bold">ABOUT FORM</p>
+				<p class="text-secondary mb-2 font-weight-bold">ABOUT </p>
 				<p class="text-secondary mb-1">Our team</p>
 				<p class="text-secondary mb-1">Careers</p>
 				<p class="text-secondary mb-1">Press</p>
 				<p class="text-secondary mb-1">Stores</p>
 			</div>
 			<div class="col-md-2 mb-3">
-				<p class="text-secondary mb-2 font-weight-bold">CONNECT</p>
-				<p class="text-secondary mb-1">Facebook</p>
-				<p class="text-secondary mb-1">Linkden</p>
-				<p class="text-secondary mb-1">Twitter</p>
-				<p class="text-secondary mb-1">Instagram</p>
+				<p class="text-secondary mb-2 font-weight-bold">SOCIAL LINKS</p>
+				<p class="text-secondary mb-1"><a href="https://www.facebook.com" class="">
+				<i class="fa fa-facebook"></i> Facebook</a></p>
+				<p class="text-secondary mb-1"><a href="https://www.linkedin.com" class="">
+					<i class="fa fa-linkedin"></i> Linkedin</a></p>
+				<p class="text-secondary mb-1"><a href="https://www.twitter.com" class="">
+				<i class="fa fa-twitter"></i> Twitter</a></p>
+				<p class="text-secondary mb-1"><a href="https://www.instagram.com" class="">
+					<i class="fa fa-instagram"></i> Instagram</a></p>
 			</div>
 			<div class="col-md-2 mb-3">
 				<p class="text-secondary mb-2 font-weight-bold">CONTACT US</p>

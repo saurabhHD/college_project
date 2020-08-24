@@ -18,16 +18,28 @@ if($response)
 		$date = date_create($date);
 		$time = $date->format('h:i A');
 		$date = $date->format('d-m-Y');
-
+		$massage_num = $data['id'];
+		$msg_status = $data['status'];
+		if($msg_status == "read")
+		{
+			$msg_status = '<i class="fas fa-check-double"></i>';
+		}
+		else
+		
+		{
+			$msg_status = '<i class="fa fa-check"></i>';
+		}
+		
 		if($user_id == $msg_sender_id)
 		{
-			$box = '<div class="me p-2 shadow-sm alert alert-success float-right w-75 mb-3 border-0">
+			$box = '<div class="me p-2 shadow-sm alert alert-success raju float-right w-75 mb-3 border-0" id="'.base64_encode($massage_num).'">
 						<div class="float-left">
 							<small class="text-left alert-success rounded-0">
 							'.$massage.'
 							</small>
 						</div>
 						<div class="float-right ml-2">
+						<span>'.$msg_status.'</span>
 							<small>'.$time.'</small>
 						</div>
 					</div>';
@@ -35,13 +47,15 @@ if($response)
 		}
 		else
 		{
-			$box = '<div class="other p-3 shadow-sm float-left w-75 mb-3">
+			$box = '<div class="other p-3 shadow-sm float-left w-75 mb-3 raju" id="'.base64_encode($massage_num).'">
 						<div class="float-left">
 							<small class="text-left  text-secondary rounded-0">
 							'.$massage.'
 							</small>
 						</div>
 						<div class="float-right ml-2 text-secondary">
+
+
 							<small>'.$time.'</small>
 						</div>
 					</div>';

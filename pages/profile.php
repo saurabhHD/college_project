@@ -7,6 +7,11 @@ if(empty($_COOKIE['_aid_']))
 }
 require_once("../common_files/database/database.php");
 require_once("../php/user_info.php");
+	if($user_status == "pending")
+	{
+		header("Location:activate_account.php");
+		exit;
+	}
 $complete = 0;
 if($email != "")
 {
