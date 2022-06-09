@@ -69,7 +69,7 @@ else
 <div class="container bg-white">
 <nav class="navbar navbar-expand-lg navbar-light bg-white ">
 	<a href="" class="navbar-brand">
-		<img src="images/logo.svg" width="180" class="pt-1">
+		<img src="../images/logo.svg" width="180" class="pt-1">
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
     <span class="navbar-toggler-icon"></span>
