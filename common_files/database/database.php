@@ -9,6 +9,9 @@ class database{
 		{
 			return $this->db;
 		}
+		else{
+			echo "faild to connect with database";
+		}
 	}
 }
 
